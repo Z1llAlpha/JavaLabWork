@@ -1,4 +1,4 @@
-//импортируем все необходимое
+//РёРјРїРѕСЂС‚РёСЂСѓРµРј РІСЃРµ РЅРµРѕР±С…РѕРґРёРјРѕРµ
 import java.awt.Button;
 import java.awt.Choice;
 import java.awt.Color;
@@ -20,28 +20,28 @@ import java.awt.event.WindowEvent;
 import java.time.Duration;
 import java.time.Instant;
 
-public class Main { //главный класс программы
+public class Main { //РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ РїСЂРѕРіСЂР°РјРјС‹
 
-	static int blocksCount; //переменная для хранения количества блоков
-	static String selectedBlock = null; //переменная для хранения текущего выбранного блока
-	static String selectedFile = null; //переменная для хранения текущего выбранного файла
-	static String selectedSort = null; //переменная для хранения текущей выбранной сортировки
-	static long[] elements; //переменная для хранения элементов блока
-	static String[] sortsArray = new String[] {"Сортировка выбором","Пузырек","Умный пузырек","Шейкер (задание 5)","Быстрая сортировка"}; //массив с названиями сортировок
-	static int[] numbersCountArray = new int[] {100,500,1000,5000,10000,50000}; //массив с размерами файлов
-	public static void main(String[] args) { //главный метод программы aka точка входа в программу
-		//создадим окна
+	static int blocksCount; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° Р±Р»РѕРєРѕРІ
+	static String selectedBlock = null; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р±Р»РѕРєР°
+	static String selectedFile = null; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСѓС‰РµРіРѕ РІС‹Р±СЂР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°
+	static String selectedSort = null; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСѓС‰РµР№ РІС‹Р±СЂР°РЅРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	static long[] elements; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ Р±Р»РѕРєР°
+	static String[] sortsArray = new String[] {"РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј","РџСѓР·С‹СЂРµРє","РЈРјРЅС‹Р№ РїСѓР·С‹СЂРµРє","РЁРµР№РєРµСЂ (Р·Р°РґР°РЅРёРµ 5)","Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°"}; //РјР°СЃСЃРёРІ СЃ РЅР°Р·РІР°РЅРёСЏРјРё СЃРѕСЂС‚РёСЂРѕРІРѕРє
+	static int[] numbersCountArray = new int[] {100,500,1000,5000,10000,50000}; //РјР°СЃСЃРёРІ СЃ СЂР°Р·РјРµСЂР°РјРё С„Р°Р№Р»РѕРІ
+	public static void main(String[] args) { //РіР»Р°РІРЅС‹Р№ РјРµС‚РѕРґ РїСЂРѕРіСЂР°РјРјС‹ aka С‚РѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ
+		//СЃРѕР·РґР°РґРёРј РѕРєРЅР°
 		Frame frameMain = new Frame();
 		Frame frameSortAll = new Frame();
 		Frame frameTable = new Frame();
-		//отключим и сделаем невидимыми все окна
+		//РѕС‚РєР»СЋС‡РёРј Рё СЃРґРµР»Р°РµРј РЅРµРІРёРґРёРјС‹РјРё РІСЃРµ РѕРєРЅР°
 		frameSortAll.setVisible(false);
 		frameSortAll.setEnabled(false);
 		frameMain.setEnabled(false);
 		frameMain.setVisible(false);
 		frameTable.setVisible(false);
 		frameTable.setEnabled(false);
-		//создадим компоненты графического интерфейса
+		//СЃРѕР·РґР°РґРёРј РєРѕРјРїРѕРЅРµРЅС‚С‹ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
 		Label blocksCountLabel = new Label();
 		TextField blocksCountTextField = new TextField();
 		Button createBlocksButton = new Button();
@@ -65,7 +65,7 @@ public class Main { //главный класс программы
 		GridBagLayout layoutManagerSortAll = new GridBagLayout();
 		GridBagLayout layoutManagerPlots = new GridBagLayout();
 		GridLayout layoutManagerTable = new GridLayout(7,6);
-		//настроим компоненты графического интерфейса
+		//РЅР°СЃС‚СЂРѕРёРј РєРѕРјРїРѕРЅРµРЅС‚С‹ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
 		frameMain.setTitle("Laboratory work | Main");
 		frameMain.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		frameMain.setLayout(layoutManagerMain);
@@ -80,7 +80,7 @@ public class Main { //главный класс программы
 		layoutManagerTable.setHgap(5);
 		layoutManagerTable.setVgap(5);
 		frameTable.setLayout(layoutManagerTable);
-		GridBagConstraints constraintsConfig = new GridBagConstraints(); //создадим объект с настройками параметров
+		GridBagConstraints constraintsConfig = new GridBagConstraints(); //СЃРѕР·РґР°РґРёРј РѕР±СЉРµРєС‚ СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё РїР°СЂР°РјРµС‚СЂРѕРІ
 		constraintsConfig.anchor=constraintsConfig.WEST;
 		constraintsConfig.fill=constraintsConfig.HORIZONTAL;
 		constraintsConfig.gridx=0;
@@ -146,163 +146,163 @@ public class Main { //главный класс программы
 				frameTable.add(tableLabels[i][j], constraintsConfig);
 			}
 		}
-		//инициализируем свойства некоторых компонентов графического интерфейса
-		blocksCountLabel.setText("Введите кол-во блоков: ");
-		createBlocksButton.setLabel("Создать блоки");
-		blockSelectChoice.add("Выберите блок");
-		fileSelectChoice.add("Выберите файл");
-		sortSelectChoice.add("Выберите сортировку");
-		sortFileButton.setLabel("Отсортировать файл");
-		timeElapsedLabel.setText("0 нс");
-		sortAllButton.setLabel("Задание #7");
-		inputFileLabel.setText("Исходный файл");
-		outputFileLabel.setText("Отсортированный файл");
-		backButton.setLabel("<= Назад");
-		autoSortButton.setLabel("Отсортировать");
-		allSortProgressLabel.setText("Прогресс: 0/100");
-		goToPlotButton.setLabel("График");
-		goToTableButton.setLabel("Таблица");
+		//РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЃРІРѕР№СЃС‚РІР° РЅРµРєРѕС‚РѕСЂС‹С… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
+		blocksCountLabel.setText("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ Р±Р»РѕРєРѕРІ: ");
+		createBlocksButton.setLabel("РЎРѕР·РґР°С‚СЊ Р±Р»РѕРєРё");
+		blockSelectChoice.add("Р’С‹Р±РµСЂРёС‚Рµ Р±Р»РѕРє");
+		fileSelectChoice.add("Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р»");
+		sortSelectChoice.add("Р’С‹Р±РµСЂРёС‚Рµ СЃРѕСЂС‚РёСЂРѕРІРєСѓ");
+		sortFileButton.setLabel("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ С„Р°Р№Р»");
+		timeElapsedLabel.setText("0 РЅСЃ");
+		sortAllButton.setLabel("Р—Р°РґР°РЅРёРµ #7");
+		inputFileLabel.setText("РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р»");
+		outputFileLabel.setText("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ С„Р°Р№Р»");
+		backButton.setLabel("<= РќР°Р·Р°Рґ");
+		autoSortButton.setLabel("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ");
+		allSortProgressLabel.setText("РџСЂРѕРіСЂРµСЃСЃ: 0/100");
+		goToPlotButton.setLabel("Р“СЂР°С„РёРє");
+		goToTableButton.setLabel("РўР°Р±Р»РёС†Р°");
 		goToPlotButton.setEnabled(false);
 		goToTableButton.setEnabled(false);
-		//подготовим объект класса SortManager
-		SortManager sortManager = new SortManager(); //создадим объект класса SortManager
-		//назначим обработчики событий для графических компонентов
-		frameMain.addWindowListener(new WindowAdapter() { //добавим обработчик события
-			public void windowClosing(WindowEvent windowEvent) { //обработчик события закрытия главного окна
-				System.exit(0); //завершим программу
+		//РїРѕРґРіРѕС‚РѕРІРёРј РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° SortManager
+		SortManager sortManager = new SortManager(); //СЃРѕР·РґР°РґРёРј РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° SortManager
+		//РЅР°Р·РЅР°С‡РёРј РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№ РґР»СЏ РіСЂР°С„РёС‡РµСЃРєРёС… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ
+		frameMain.addWindowListener(new WindowAdapter() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void windowClosing(WindowEvent windowEvent) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ Р·Р°РєСЂС‹С‚РёСЏ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР°
+				System.exit(0); //Р·Р°РІРµСЂС€РёРј РїСЂРѕРіСЂР°РјРјСѓ
 			}
 		});
-		frameSortAll.addWindowListener(new WindowAdapter() { //добавим обработчик события
-			public void windowClosing(WindowEvent windowEvent) { //обработчик события закрытия окна сортировки нескольких блоков
-				System.exit(0); //завершим программу
+		frameSortAll.addWindowListener(new WindowAdapter() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void windowClosing(WindowEvent windowEvent) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ Р·Р°РєСЂС‹С‚РёСЏ РѕРєРЅР° СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… Р±Р»РѕРєРѕРІ
+				System.exit(0); //Р·Р°РІРµСЂС€РёРј РїСЂРѕРіСЂР°РјРјСѓ
 			}
 		});
-		createBlocksButton.addActionListener(new ActionListener() { //добавим обработчик события
-			public void actionPerformed(ActionEvent e) { //обработчик события нажатия на кнопку создания блоков
+		createBlocksButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ СЃРѕР·РґР°РЅРёСЏ Р±Р»РѕРєРѕРІ
 				try {
-					blocksCount = Integer.valueOf(blocksCountTextField.getText()); //считаем количество блоков
+					blocksCount = Integer.valueOf(blocksCountTextField.getText()); //СЃС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р»РѕРєРѕРІ
 				} catch(Exception ex) {}
-				sortManager.CreateBlocks(blocksCount); //создадим нужное количество блоков
-				ConfigureBlockSelect(blockSelectChoice,fileSelectChoice,sortSelectChoice); //выведем блоки в соответствующий выкидной список
+				sortManager.CreateBlocks(blocksCount); //СЃРѕР·РґР°РґРёРј РЅСѓР¶РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р»РѕРєРѕРІ
+				ConfigureBlockSelect(blockSelectChoice,fileSelectChoice,sortSelectChoice); //РІС‹РІРµРґРµРј Р±Р»РѕРєРё РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РІС‹РєРёРґРЅРѕР№ СЃРїРёСЃРѕРє
 			}
 		});
-		blockSelectChoice.addItemListener(new ItemListener() { //добавим обработчик события
-			public void itemStateChanged(ItemEvent e) { //обработчик события выбора блока из выпадающего списка
-				selectedBlock = blockSelectChoice.getSelectedItem(); //считаем текущий выбранный блок
-				ConfigureFileSelect(fileSelectChoice,sortSelectChoice); //выведем файлы блока в соответствующий выкидной список
+		blockSelectChoice.addItemListener(new ItemListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void itemStateChanged(ItemEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РІС‹Р±РѕСЂР° Р±Р»РѕРєР° РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР°
+				selectedBlock = blockSelectChoice.getSelectedItem(); //СЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰РёР№ РІС‹Р±СЂР°РЅРЅС‹Р№ Р±Р»РѕРє
+				ConfigureFileSelect(fileSelectChoice,sortSelectChoice); //РІС‹РІРµРґРµРј С„Р°Р№Р»С‹ Р±Р»РѕРєР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РІС‹РєРёРґРЅРѕР№ СЃРїРёСЃРѕРє
 			}
 		});
-		fileSelectChoice.addItemListener(new ItemListener() { //добавим обработчик события
-			public void itemStateChanged(ItemEvent e) { //обработчик события выбора файла из выпадающего списка
-				selectedFile = fileSelectChoice.getSelectedItem(); //считаем текущий выбранный файл
-				ConfigureSortSelect(sortSelectChoice); //выведем список сортировок в соответствующий выкидной список
+		fileSelectChoice.addItemListener(new ItemListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void itemStateChanged(ItemEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РІС‹Р±РѕСЂР° С„Р°Р№Р»Р° РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР°
+				selectedFile = fileSelectChoice.getSelectedItem(); //СЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰РёР№ РІС‹Р±СЂР°РЅРЅС‹Р№ С„Р°Р№Р»
+				ConfigureSortSelect(sortSelectChoice); //РІС‹РІРµРґРµРј СЃРїРёСЃРѕРє СЃРѕСЂС‚РёСЂРѕРІРѕРє РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РІС‹РєРёРґРЅРѕР№ СЃРїРёСЃРѕРє
 			}
 		});
-		sortSelectChoice.addItemListener(new ItemListener() { //добавим обработчик события
-			public void itemStateChanged(ItemEvent e) { //обработчик события выбора сортировки из выпадающего списка
-				selectedSort = sortSelectChoice.getSelectedItem(); //считаем текущую выбранную сортировку
+		sortSelectChoice.addItemListener(new ItemListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void itemStateChanged(ItemEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РІС‹Р±РѕСЂР° СЃРѕСЂС‚РёСЂРѕРІРєРё РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР°
+				selectedSort = sortSelectChoice.getSelectedItem(); //СЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰СѓСЋ РІС‹Р±СЂР°РЅРЅСѓСЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ
 			}
 		});
-		sortFileButton.addActionListener(new ActionListener() { //добавим обработчик события
-			public void actionPerformed(ActionEvent e) { //обработчик нажатия на кнопку сортировки
-				if(selectedBlock!=null && selectedFile!=null && selectedSort!=null) { //если выбран блок, файл и сортировка
-					inputFileList.removeAll(); //очистим список элементов исходного файла
-					outputFileList.removeAll(); //очистим список элементов отсортированного файла
-					elements = SortManager.ReadFile(selectedBlock+"numbers"+selectedFile); //считаем элементы из файла
-					ElementsToList(inputFileList,elements); //выведем элементы исходного файла
-					Instant startTime = Instant.now(); //получим текущее время
-					SortManager.PerformSort(selectedSort,elements); //отсортируем наши элементы
-					Instant finishTime = Instant.now(); //получим текущее время
-					long elapsed = Duration.between(startTime, finishTime).toNanos(); //посчитаем время, затраченное на сортировку
-					String timeMeasurmentUnit=" нс"; //переменная с текущей единицой измерения времени
-					if (elapsed>1000) { //если сортировка шла дольше 1мс
-						elapsed=elapsed/1000; //пересчитаем затраченное время
-						timeMeasurmentUnit=" мс"; //сменим единицу измерения
+		sortFileButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ СЃРѕСЂС‚РёСЂРѕРІРєРё
+				if(selectedBlock!=null && selectedFile!=null && selectedSort!=null) { //РµСЃР»Рё РІС‹Р±СЂР°РЅ Р±Р»РѕРє, С„Р°Р№Р» Рё СЃРѕСЂС‚РёСЂРѕРІРєР°
+					inputFileList.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє СЌР»РµРјРµРЅС‚РѕРІ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+					outputFileList.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє СЌР»РµРјРµРЅС‚РѕРІ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°
+					elements = SortManager.ReadFile(selectedBlock+"numbers"+selectedFile); //СЃС‡РёС‚Р°РµРј СЌР»РµРјРµРЅС‚С‹ РёР· С„Р°Р№Р»Р°
+					ElementsToList(inputFileList,elements); //РІС‹РІРµРґРµРј СЌР»РµРјРµРЅС‚С‹ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+					Instant startTime = Instant.now(); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
+					SortManager.PerformSort(selectedSort,elements); //РѕС‚СЃРѕСЂС‚РёСЂСѓРµРј РЅР°С€Рё СЌР»РµРјРµРЅС‚С‹
+					Instant finishTime = Instant.now(); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
+					long elapsed = Duration.between(startTime, finishTime).toNanos(); //РїРѕСЃС‡РёС‚Р°РµРј РІСЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ
+					String timeMeasurmentUnit=" РЅСЃ"; //РїРµСЂРµРјРµРЅРЅР°СЏ СЃ С‚РµРєСѓС‰РµР№ РµРґРёРЅРёС†РѕР№ РёР·РјРµСЂРµРЅРёСЏ РІСЂРµРјРµРЅРё
+					if (elapsed>1000) { //РµСЃР»Рё СЃРѕСЂС‚РёСЂРѕРІРєР° С€Р»Р° РґРѕР»СЊС€Рµ 1РјСЃ
+						elapsed=elapsed/1000; //РїРµСЂРµСЃС‡РёС‚Р°РµРј Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РІСЂРµРјСЏ
+						timeMeasurmentUnit=" РјСЃ"; //СЃРјРµРЅРёРј РµРґРёРЅРёС†Сѓ РёР·РјРµСЂРµРЅРёСЏ
 					}
-					ElementsToList(outputFileList,elements); //выведем отсортрованные элементы
-					timeElapsedLabel.setText(String.valueOf(elapsed)+timeMeasurmentUnit); //выведем время, затраченное на сортировку
-				} else { //если выбрано не все
-					timeElapsedLabel.setText("Для начала сортировки - выберите блок, файл и метод сортировки"); //выведем сообщение пользователю
+					ElementsToList(outputFileList,elements); //РІС‹РІРµРґРµРј РѕС‚СЃРѕСЂС‚СЂРѕРІР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
+					timeElapsedLabel.setText(String.valueOf(elapsed)+timeMeasurmentUnit); //РІС‹РІРµРґРµРј РІСЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ
+				} else { //РµСЃР»Рё РІС‹Р±СЂР°РЅРѕ РЅРµ РІСЃРµ
+					timeElapsedLabel.setText("Р”Р»СЏ РЅР°С‡Р°Р»Р° СЃРѕСЂС‚РёСЂРѕРІРєРё - РІС‹Р±РµСЂРёС‚Рµ Р±Р»РѕРє, С„Р°Р№Р» Рё РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё"); //РІС‹РІРµРґРµРј СЃРѕРѕР±С‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
 				}
 			}
 		});
-		sortAllButton.addActionListener(new ActionListener() { //добавим обработчик событий
-			public void actionPerformed(ActionEvent e) { //обработчик нажатия на кнопку открытия окна сортировки нескольких файлов
-				frameMain.setVisible(false); //сделаем главное окно невидимым
-				frameMain.setEnabled(false); //отключим главное окно
-				frameSortAll.setEnabled(true); //окно сортировки нескольких файлов
-				frameSortAll.setVisible(true); //сделаем окно сортировки нескольких файлов видимым
+		sortAllButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РѕС‚РєСЂС‹С‚РёСЏ РѕРєРЅР° СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ
+				frameMain.setVisible(false); //СЃРґРµР»Р°РµРј РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ РЅРµРІРёРґРёРјС‹Рј
+				frameMain.setEnabled(false); //РѕС‚РєР»СЋС‡РёРј РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ
+				frameSortAll.setEnabled(true); //РѕРєРЅРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ
+				frameSortAll.setVisible(true); //СЃРґРµР»Р°РµРј РѕРєРЅРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ РІРёРґРёРјС‹Рј
 			}
 		});
-		backButton.addActionListener(new ActionListener() { //добавим обработчик событий
-			public void actionPerformed(ActionEvent e) { //обработчик нажатия на кнопку возврата
-				frameSortAll.setVisible(false);  //сделаем окно сортировки несколько файлов невидимым
-				frameSortAll.setEnabled(false); //отключим окно сортировки нескольких файлов
-				frameMain.setEnabled(true); //включим главное окно
-				frameMain.setVisible(true); //сделаем главное окно видимым
+		backButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РІРѕР·РІСЂР°С‚Р°
+				frameSortAll.setVisible(false);  //СЃРґРµР»Р°РµРј РѕРєРЅРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РЅРµРІРёРґРёРјС‹Рј
+				frameSortAll.setEnabled(false); //РѕС‚РєР»СЋС‡РёРј РѕРєРЅРѕ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ
+				frameMain.setEnabled(true); //РІРєР»СЋС‡РёРј РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ
+				frameMain.setVisible(true); //СЃРґРµР»Р°РµРј РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ РІРёРґРёРјС‹Рј
 			}
 		});
-		autoSortButton.addActionListener(new ActionListener() { //добавим обработчик события
-			public void actionPerformed(ActionEvent e) { //обработчик события нажатия на кнопку автоматической сортировки
-				long[][] sortsTime = new long[5][6]; //массив для хранения времен выполнения сортировок
-				for(int i=0;i<5;i++) { //пройдемся по каждому элементу массива
+		autoSortButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
+				long[][] sortsTime = new long[5][6]; //РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІСЂРµРјРµРЅ РІС‹РїРѕР»РЅРµРЅРёСЏ СЃРѕСЂС‚РёСЂРѕРІРѕРє
+				for(int i=0;i<5;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ РјР°СЃСЃРёРІР°
 					for(int j=0;j<6;j++) {
-						sortsTime[i][j]=0; //инициализируем его
+						sortsTime[i][j]=0; //РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РµРіРѕ
 					}
 				}
-				SortManager.CreateBlocks(5); //создадим 5 блоков
-				int progressConst = (5*5*6)/100; //создадим констанут для просчета прогресса
+				SortManager.CreateBlocks(5); //СЃРѕР·РґР°РґРёРј 5 Р±Р»РѕРєРѕРІ
+				int progressConst = (5*5*6)/100; //СЃРѕР·РґР°РґРёРј РєРѕРЅСЃС‚Р°РЅСѓС‚ РґР»СЏ РїСЂРѕСЃС‡РµС‚Р° РїСЂРѕРіСЂРµСЃСЃР°
 				int iterator=1;
-				for(int s=0;s<5;s++) { //пройдемся по каждому виду сортировки
-					for(int b=0;b<5;b++) { //пройдемся по каждому блоку
-						for(int f=0;f<6;f++) { //пройдемся по каждому файлу
-							String currentFileName="block"+String.valueOf(b)+"numbers"+String.valueOf(numbersCountArray[f]); //просчитаем текущее название файла
-							elements=SortManager.ReadFile(currentFileName); //считаем текущий файл
-							Instant startTime = Instant.now(); //получим текущее время
-							SortManager.PerformSort(sortsArray[s], elements); //отсортируем элементы текущего файла текущей сортировкой
-							Instant finishTime = Instant.now(); //получим текущее время
-							long elapsed = Duration.between(startTime, finishTime).toNanos(); //посчитаем время, затраченное на сортировку
-							//SortManager.WriteFile(currentFileName, elements); //запишем отсортированные элементы в файл
-							sortsTime[s][f]+=elapsed; //добавим время, затраченное на текущую сортировку в массив
-							allSortProgressLabel.setText("Прогресс: "+String.valueOf((int) (progressConst*iterator/1.5))+"/100"); //выведем текущий прогресс
-							iterator++; //увеличим значение переменной-итератора
+				for(int s=0;s<5;s++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ РІРёРґСѓ СЃРѕСЂС‚РёСЂРѕРІРєРё
+					for(int b=0;b<5;b++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ Р±Р»РѕРєСѓ
+						for(int f=0;f<6;f++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ С„Р°Р№Р»Сѓ
+							String currentFileName="block"+String.valueOf(b)+"numbers"+String.valueOf(numbersCountArray[f]); //РїСЂРѕСЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰РµРµ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
+							elements=SortManager.ReadFile(currentFileName); //СЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰РёР№ С„Р°Р№Р»
+							Instant startTime = Instant.now(); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
+							SortManager.PerformSort(sortsArray[s], elements); //РѕС‚СЃРѕСЂС‚РёСЂСѓРµРј СЌР»РµРјРµРЅС‚С‹ С‚РµРєСѓС‰РµРіРѕ С„Р°Р№Р»Р° С‚РµРєСѓС‰РµР№ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
+							Instant finishTime = Instant.now(); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ
+							long elapsed = Duration.between(startTime, finishTime).toNanos(); //РїРѕСЃС‡РёС‚Р°РµРј РІСЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ
+							//SortManager.WriteFile(currentFileName, elements); //Р·Р°РїРёС€РµРј РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РІ С„Р°Р№Р»
+							sortsTime[s][f]+=elapsed; //РґРѕР±Р°РІРёРј РІСЂРµРјСЏ, Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РЅР° С‚РµРєСѓС‰СѓСЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІ РјР°СЃСЃРёРІ
+							allSortProgressLabel.setText("РџСЂРѕРіСЂРµСЃСЃ: "+String.valueOf((int) (progressConst*iterator/1.5))+"/100"); //РІС‹РІРµРґРµРј С‚РµРєСѓС‰РёР№ РїСЂРѕРіСЂРµСЃСЃ
+							iterator++; //СѓРІРµР»РёС‡РёРј Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№-РёС‚РµСЂР°С‚РѕСЂР°
 						}
 					}
 				}
-				for(int i=0;i<5;i++){ //пройдемся по каждому элементу массива
+				for(int i=0;i<5;i++){ //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ РјР°СЃСЃРёРІР°
 					for(int j=0;j<6;j++) {
-						sortsTime[i][j]=sortsTime[i][j]/5; //посчитаем среднее затраченное время
+						sortsTime[i][j]=sortsTime[i][j]/5; //РїРѕСЃС‡РёС‚Р°РµРј СЃСЂРµРґРЅРµРµ Р·Р°С‚СЂР°С‡РµРЅРЅРѕРµ РІСЂРµРјСЏ
 					}
 				}
-				//создадим массив с элементами таблицы
-				String[][] data = new String[][] {{"Кол-во файлов","Простой выбор(Задание 2)","Простой обмен(Задание 3)","Умный пузырек(задание 4)","Шейкер(Задание 5)","Быстрая сортировка(Задание 6)"},
+				//СЃРѕР·РґР°РґРёРј РјР°СЃСЃРёРІ СЃ СЌР»РµРјРµРЅС‚Р°РјРё С‚Р°Р±Р»РёС†С‹
+				String[][] data = new String[][] {{"РљРѕР»-РІРѕ С„Р°Р№Р»РѕРІ","РџСЂРѕСЃС‚РѕР№ РІС‹Р±РѕСЂ(Р—Р°РґР°РЅРёРµ 2)","РџСЂРѕСЃС‚РѕР№ РѕР±РјРµРЅ(Р—Р°РґР°РЅРёРµ 3)","РЈРјРЅС‹Р№ РїСѓР·С‹СЂРµРє(Р·Р°РґР°РЅРёРµ 4)","РЁРµР№РєРµСЂ(Р—Р°РґР°РЅРёРµ 5)","Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°(Р—Р°РґР°РЅРёРµ 6)"},
 													{"100", String.valueOf(sortsTime[0][0]), String.valueOf(sortsTime[1][0]), String.valueOf(sortsTime[2][0]), String.valueOf(sortsTime[3][0]), String.valueOf(sortsTime[4][0])},
 													{"500", String.valueOf(sortsTime[0][1]), String.valueOf(sortsTime[1][1]), String.valueOf(sortsTime[2][1]), String.valueOf(sortsTime[3][1]), String.valueOf(sortsTime[4][1])},
 													{"1000", String.valueOf(sortsTime[0][2]), String.valueOf(sortsTime[1][2]), String.valueOf(sortsTime[2][2]), String.valueOf(sortsTime[3][2]), String.valueOf(sortsTime[4][2])},
 													{"5000", String.valueOf(sortsTime[0][3]), String.valueOf(sortsTime[1][3]), String.valueOf(sortsTime[2][3]), String.valueOf(sortsTime[3][3]), String.valueOf(sortsTime[4][3])},
 													{"10000", String.valueOf(sortsTime[0][4]), String.valueOf(sortsTime[1][4]), String.valueOf(sortsTime[2][4]), String.valueOf(sortsTime[3][4]), String.valueOf(sortsTime[4][4])},
 													{"50000", String.valueOf(sortsTime[0][5]), String.valueOf(sortsTime[1][5]), String.valueOf(sortsTime[2][5]), String.valueOf(sortsTime[3][5]), String.valueOf(sortsTime[4][5])}};
-				for(int i=0;i<7;i++) { //пройдемся по каждой строке
-					for(int j=0;j<6;j++) { //пройдемся по каждому столбцу
-						tableLabels[i][j].setText(data[i][j]); //выведем в таблицу данные
+				for(int i=0;i<7;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРµ
+					for(int j=0;j<6;j++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЃС‚РѕР»Р±С†Сѓ
+						tableLabels[i][j].setText(data[i][j]); //РІС‹РІРµРґРµРј РІ С‚Р°Р±Р»РёС†Сѓ РґР°РЅРЅС‹Рµ
 					}
 				}
-				goToTableButton.setEnabled(true); //активируем кнопку перехода к таблице
-				goToPlotButton.setEnabled(false); //активируем кнопку перехода к графику
+				goToTableButton.setEnabled(true); //Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ РїРµСЂРµС…РѕРґР° Рє С‚Р°Р±Р»РёС†Рµ
+				goToPlotButton.setEnabled(false); //Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ РїРµСЂРµС…РѕРґР° Рє РіСЂР°С„РёРєСѓ
 			}
 		});
-		goToTableButton.addActionListener(new ActionListener() { //добавим обработчик событий
-			public void actionPerformed(ActionEvent e) { //обрабочтик нажатия на кнопку перехода к таблице
-				frameTable.setEnabled(true); //активируем окно с таблицей
-				frameTable.setVisible(true); //сделаем окно с таблицей видимым
-				frameSortAll.setEnabled(false); //деактивируем окно седьмого задания
+		goToTableButton.addActionListener(new ActionListener() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№
+			public void actionPerformed(ActionEvent e) { //РѕР±СЂР°Р±РѕС‡С‚РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РїРµСЂРµС…РѕРґР° Рє С‚Р°Р±Р»РёС†Рµ
+				frameTable.setEnabled(true); //Р°РєС‚РёРІРёСЂСѓРµРј РѕРєРЅРѕ СЃ С‚Р°Р±Р»РёС†РµР№
+				frameTable.setVisible(true); //СЃРґРµР»Р°РµРј РѕРєРЅРѕ СЃ С‚Р°Р±Р»РёС†РµР№ РІРёРґРёРјС‹Рј
+				frameSortAll.setEnabled(false); //РґРµР°РєС‚РёРІРёСЂСѓРµРј РѕРєРЅРѕ СЃРµРґСЊРјРѕРіРѕ Р·Р°РґР°РЅРёСЏ
 			}
 		});
-		frameTable.addWindowListener(new WindowAdapter() { //добавим обработчик события
-			public void windowClosing(WindowEvent windowEvent) { //обработчик события закрытия окна с таблицей
-				frameTable.setEnabled(false); //деактивируем окно с таблицей
-				frameTable.setVisible(false); //сделаем окно с таблицей невидимым
-				frameSortAll.setEnabled(true); //активируем оккн 7 задания
+		frameTable.addWindowListener(new WindowAdapter() { //РґРѕР±Р°РІРёРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ
+			public void windowClosing(WindowEvent windowEvent) { //РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ Р·Р°РєСЂС‹С‚РёСЏ РѕРєРЅР° СЃ С‚Р°Р±Р»РёС†РµР№
+				frameTable.setEnabled(false); //РґРµР°РєС‚РёРІРёСЂСѓРµРј РѕРєРЅРѕ СЃ С‚Р°Р±Р»РёС†РµР№
+				frameTable.setVisible(false); //СЃРґРµР»Р°РµРј РѕРєРЅРѕ СЃ С‚Р°Р±Р»РёС†РµР№ РЅРµРІРёРґРёРјС‹Рј
+				frameSortAll.setEnabled(true); //Р°РєС‚РёРІРёСЂСѓРµРј РѕРєРєРЅ 7 Р·Р°РґР°РЅРёСЏ
 			}
 		});
 		goToPlotButton.addActionListener(new ActionListener() {
@@ -310,7 +310,7 @@ public class Main { //главный класс программы
 				//
 			}
 		});
-		//включим и выведим окно
+		//РІРєР»СЋС‡РёРј Рё РІС‹РІРµРґРёРј РѕРєРЅРѕ
 		frameMain.pack();
 		frameSortAll.pack();
 		frameTable.pack();
@@ -322,33 +322,33 @@ public class Main { //главный класс программы
 		frameMain.setVisible(true);
 	}
 	
-	private static void ConfigureBlockSelect(Choice blockChoice,Choice fileChoice,Choice sortChoice) { //процедура вывода списка блоков
-		blockChoice.removeAll(); //очистим список блоков
-		fileChoice.removeAll(); //очистим список файлов
-		sortChoice.removeAll(); //очистим список сортировок
-		for(int i=0;i<blocksCount;i++) { //пройдемся по каждому блоку
-			blockChoice.add("block"+String.valueOf(i+1)); //добавим его в список
+	private static void ConfigureBlockSelect(Choice blockChoice,Choice fileChoice,Choice sortChoice) { //РїСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґР° СЃРїРёСЃРєР° Р±Р»РѕРєРѕРІ
+		blockChoice.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє Р±Р»РѕРєРѕРІ
+		fileChoice.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
+		sortChoice.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє СЃРѕСЂС‚РёСЂРѕРІРѕРє
+		for(int i=0;i<blocksCount;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ Р±Р»РѕРєСѓ
+			blockChoice.add("block"+String.valueOf(i+1)); //РґРѕР±Р°РІРёРј РµРіРѕ РІ СЃРїРёСЃРѕРє
 		}
 	}
 	
-	private static void ConfigureFileSelect(Choice fileChoice,Choice sortChoice) { //процедура вывода списка файлов
-		fileChoice.removeAll(); //очистим список файлов
-		sortChoice.removeAll(); //очистим список сортировок
-		for(int i=0;i<6;i++) { //пройдемся по каждому файлу
-			fileChoice.add(String.valueOf(numbersCountArray[i])); //выведем его в список
+	private static void ConfigureFileSelect(Choice fileChoice,Choice sortChoice) { //РїСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґР° СЃРїРёСЃРєР° С„Р°Р№Р»РѕРІ
+		fileChoice.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
+		sortChoice.removeAll(); //РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє СЃРѕСЂС‚РёСЂРѕРІРѕРє
+		for(int i=0;i<6;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ С„Р°Р№Р»Сѓ
+			fileChoice.add(String.valueOf(numbersCountArray[i])); //РІС‹РІРµРґРµРј РµРіРѕ РІ СЃРїРёСЃРѕРє
 		}
 	}
 	
-	private static void ConfigureSortSelect(Choice sortSelect) { //процедура вывода списка сортировок
-		sortSelect.removeAll(); //очстим список
-		for(int i=0;i<5;i++) { //пройдемся по каждой сортировке
-			sortSelect.add(sortsArray[i]); //добавим сортировку в список
+	private static void ConfigureSortSelect(Choice sortSelect) { //РїСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґР° СЃРїРёСЃРєР° СЃРѕСЂС‚РёСЂРѕРІРѕРє
+		sortSelect.removeAll(); //РѕС‡СЃС‚РёРј СЃРїРёСЃРѕРє
+		for(int i=0;i<5;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРµ
+			sortSelect.add(sortsArray[i]); //РґРѕР±Р°РІРёРј СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІ СЃРїРёСЃРѕРє
 		}
 	}
 	
-	private static void ElementsToList(List list,long[] elements2) { //процедура вывода элементов в список
-		for(int i=0;i<elements2.length;i++) { //пройдемся по каждому элементу
-			list.add(String.valueOf(elements2[i])); //добавим элемент в список
+	private static void ElementsToList(List list,long[] elements2) { //РїСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРѕРє
+		for(int i=0;i<elements2.length;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ
+			list.add(String.valueOf(elements2[i])); //РґРѕР±Р°РІРёРј СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРѕРє
 		}
 	}
 	

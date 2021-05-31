@@ -8,105 +8,105 @@ import java.util.Random;
 
 public class SortManager {
 	
-	public static void CreateBlocks(int blocksCount) { //метод создания блоков
-		final String currentDirectory = System.getProperty("user.dir"); //получим текущий каталог программы
-		File tempFile = new File(currentDirectory+"\\blocks"); //создадим переменную папки для блоков
+	public static void CreateBlocks(int blocksCount) { //РјРµС‚РѕРґ СЃРѕР·РґР°РЅРёСЏ Р±Р»РѕРєРѕРІ
+		final String currentDirectory = System.getProperty("user.dir"); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі РїСЂРѕРіСЂР°РјРјС‹
+		File tempFile = new File(currentDirectory+"\\blocks"); //СЃРѕР·РґР°РґРёРј РїРµСЂРµРјРµРЅРЅСѓСЋ РїР°РїРєРё РґР»СЏ Р±Р»РѕРєРѕРІ
 		RemakeDirectory(tempFile);
-		final String blocksDirectory = currentDirectory+"\\blocks\\"; //получим директорию блоков
-		int[] numbersCountArray = new int[] {100,500,1000,5000,10000,50000}; //создадим и инициализируем массив целых чисел с количествами чисел, с которыми нужно создать файлы
-		for(int i=0;i<blocksCount;i++) { //пройдемся по каждому блоку
-			for(int j=0;j<6;j++) { //пройдемся 6 раз, т.к. в блоке 6 файлов
-				int numbersCount = numbersCountArray[j]; //получим количество цифр,необходимое для записи в этом файле
+		final String blocksDirectory = currentDirectory+"\\blocks\\"; //РїРѕР»СѓС‡РёРј РґРёСЂРµРєС‚РѕСЂРёСЋ Р±Р»РѕРєРѕРІ
+		int[] numbersCountArray = new int[] {100,500,1000,5000,10000,50000}; //СЃРѕР·РґР°РґРёРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РјР°СЃСЃРёРІ С†РµР»С‹С… С‡РёСЃРµР» СЃ РєРѕР»РёС‡РµСЃС‚РІР°РјРё С‡РёСЃРµР», СЃ РєРѕС‚РѕСЂС‹РјРё РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р»С‹
+		for(int i=0;i<blocksCount;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ Р±Р»РѕРєСѓ
+			for(int j=0;j<6;j++) { //РїСЂРѕР№РґРµРјСЃСЏ 6 СЂР°Р·, С‚.Рє. РІ Р±Р»РѕРєРµ 6 С„Р°Р№Р»РѕРІ
+				int numbersCount = numbersCountArray[j]; //РїРѕР»СѓС‡РёРј РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ,РЅРµРѕР±С…РѕРґРёРјРѕРµ РґР»СЏ Р·Р°РїРёСЃРё РІ СЌС‚РѕРј С„Р°Р№Р»Рµ
 				try {
-					DataOutputStream dos = new DataOutputStream(new FileOutputStream(blocksDirectory+"block"+i+"numbers"+String.valueOf(numbersCount)+".bin")); //откроем поток записи
-					dos.writeInt(numbersCount); //запишем число чисел
-					Random random = new Random(); //создадим объект класса Random
-					for(int k=0;k<numbersCount;k++) { //пройдеся столько раз, сколько чисел нужно записать в файл
-						int tempInt = random.nextInt(1000000); //получим случайное число от 0 до 10^6
-						dos.writeInt(tempInt); //запишем наше число в файл через поток записи
+					DataOutputStream dos = new DataOutputStream(new FileOutputStream(blocksDirectory+"block"+i+"numbers"+String.valueOf(numbersCount)+".bin")); //РѕС‚РєСЂРѕРµРј РїРѕС‚РѕРє Р·Р°РїРёСЃРё
+					dos.writeInt(numbersCount); //Р·Р°РїРёС€РµРј С‡РёСЃР»Рѕ С‡РёСЃРµР»
+					Random random = new Random(); //СЃРѕР·РґР°РґРёРј РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Random
+					for(int k=0;k<numbersCount;k++) { //РїСЂРѕР№РґРµСЃСЏ СЃС‚РѕР»СЊРєРѕ СЂР°Р·, СЃРєРѕР»СЊРєРѕ С‡РёСЃРµР» РЅСѓР¶РЅРѕ Р·Р°РїРёСЃР°С‚СЊ РІ С„Р°Р№Р»
+						int tempInt = random.nextInt(1000000); //РїРѕР»СѓС‡РёРј СЃР»СѓС‡Р°Р№РЅРѕРµ С‡РёСЃР»Рѕ РѕС‚ 0 РґРѕ 10^6
+						dos.writeInt(tempInt); //Р·Р°РїРёС€РµРј РЅР°С€Рµ С‡РёСЃР»Рѕ РІ С„Р°Р№Р» С‡РµСЂРµР· РїРѕС‚РѕРє Р·Р°РїРёСЃРё
 					}
 					dos.close();
-				} catch (IOException e) { //обработки ошибок
-					e.printStackTrace(); //вывод ошибок
+				} catch (IOException e) { //РѕР±СЂР°Р±РѕС‚РєРё РѕС€РёР±РѕРє
+					e.printStackTrace(); //РІС‹РІРѕРґ РѕС€РёР±РѕРє
 				}
 			}
 		}
 	}
 	
-	public static long[] ReadFile(String cfilename) { //метод чтения из файла
-		final String currentDirectory = System.getProperty("user.dir"); //получим текущий каталог программы
-		final String blocksDirectory = currentDirectory+"\\blocks\\"; //получим директорию блоков
-		final String filename = blocksDirectory+cfilename+".bin"; //получим полное имя файла
-		long[] elements = null; //создадим массив элементов файла
+	public static long[] ReadFile(String cfilename) { //РјРµС‚РѕРґ С‡С‚РµРЅРёСЏ РёР· С„Р°Р№Р»Р°
+		final String currentDirectory = System.getProperty("user.dir"); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі РїСЂРѕРіСЂР°РјРјС‹
+		final String blocksDirectory = currentDirectory+"\\blocks\\"; //РїРѕР»СѓС‡РёРј РґРёСЂРµРєС‚РѕСЂРёСЋ Р±Р»РѕРєРѕРІ
+		final String filename = blocksDirectory+cfilename+".bin"; //РїРѕР»СѓС‡РёРј РїРѕР»РЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°
+		long[] elements = null; //СЃРѕР·РґР°РґРёРј РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ С„Р°Р№Р»Р°
 		try {
-			DataInputStream dis = new DataInputStream(new FileInputStream(filename)); //откроем поток чтения
-			int numbersCount=dis.readInt(); //считаем количество чисел
-			elements = new long[numbersCount]; //инициализируем массив элементов файла
-			for(int i=0;i<numbersCount;i++) { //пройдемся нужное количество раз
-				elements[i]=dis.readInt(); //считаем текущий элемент файла
+			DataInputStream dis = new DataInputStream(new FileInputStream(filename)); //РѕС‚РєСЂРѕРµРј РїРѕС‚РѕРє С‡С‚РµРЅРёСЏ
+			int numbersCount=dis.readInt(); //СЃС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РёСЃРµР»
+			elements = new long[numbersCount]; //РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ С„Р°Р№Р»Р°
+			for(int i=0;i<numbersCount;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РЅСѓР¶РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р·
+				elements[i]=dis.readInt(); //СЃС‡РёС‚Р°РµРј С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ С„Р°Р№Р»Р°
 			}
 			dis.close();
-		} catch (IOException e) { //обработка ошибок
-			e.printStackTrace(); //вывод ошибок
+		} catch (IOException e) { //РѕР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
+			e.printStackTrace(); //РІС‹РІРѕРґ РѕС€РёР±РѕРє
 		}
-		return elements; //вернем массив элементов файла
+		return elements; //РІРµСЂРЅРµРј РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ С„Р°Р№Р»Р°
 	}
 	
-	public static void PerformSort(String sortName,long[] time) { //метод запуска сортировки
-		switch(sortName) { //в зависимости от названия сортировки отсортируем элементы нужной сортировкой
-			case "Сортировка выбором":
+	public static void PerformSort(String sortName,long[] time) { //РјРµС‚РѕРґ Р·Р°РїСѓСЃРєР° СЃРѕСЂС‚РёСЂРѕРІРєРё
+		switch(sortName) { //РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РЅР°Р·РІР°РЅРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РѕС‚СЃРѕСЂС‚РёСЂСѓРµРј СЌР»РµРјРµРЅС‚С‹ РЅСѓР¶РЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
+			case "РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј":
 				SelectionSort(time);
 				break;
-			case "Пузырек":
+			case "РџСѓР·С‹СЂРµРє":
 				BubbleSort(time);
 				break;
-			case "Умный пузырек":
+			case "РЈРјРЅС‹Р№ РїСѓР·С‹СЂРµРє":
 				SmartBubbleSort(time);
 				break;
-			case "Шейкер (задание 5)":
+			case "РЁРµР№РєРµСЂ (Р·Р°РґР°РЅРёРµ 5)":
 				ShakerSort(time);
 				break;
-			case "Быстрая сортировка":
+			case "Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°":
 				QuickSort(time,0,time.length-1);
 				break;
 		}
 	}
 	
-	public static void WriteFile(String filename,int[] elements) { //метод записи в файл
-		final String currentDirectory = System.getProperty("user.dir"); //получим текущий каталог программы
-		final String blocksDirectory = currentDirectory+"\\blocks\\"; //получим директорию блоков
-		final String totalFilename = blocksDirectory+filename+".bin"; //получим полное имя файла
-		File tempFile = new File(totalFilename); //создадим временную файловую переменную
-		if(tempFile.exists()) { //если файл существует
-			tempFile.delete(); //удалим его
+	public static void WriteFile(String filename,int[] elements) { //РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
+		final String currentDirectory = System.getProperty("user.dir"); //РїРѕР»СѓС‡РёРј С‚РµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі РїСЂРѕРіСЂР°РјРјС‹
+		final String blocksDirectory = currentDirectory+"\\blocks\\"; //РїРѕР»СѓС‡РёРј РґРёСЂРµРєС‚РѕСЂРёСЋ Р±Р»РѕРєРѕРІ
+		final String totalFilename = blocksDirectory+filename+".bin"; //РїРѕР»СѓС‡РёРј РїРѕР»РЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°
+		File tempFile = new File(totalFilename); //СЃРѕР·РґР°РґРёРј РІСЂРµРјРµРЅРЅСѓСЋ С„Р°Р№Р»РѕРІСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ
+		if(tempFile.exists()) { //РµСЃР»Рё С„Р°Р№Р» СЃСѓС‰РµСЃС‚РІСѓРµС‚
+			tempFile.delete(); //СѓРґР°Р»РёРј РµРіРѕ
 		}
 		try {
-			DataOutputStream dos = new DataOutputStream(new FileOutputStream(totalFilename)); //откроем поток записи
-			for(int i=0;i<elements.length;i++) { //пройдемся по каждому элементу
-				dos.writeInt(elements[i]); //запишем в файл текущий элемент
+			DataOutputStream dos = new DataOutputStream(new FileOutputStream(totalFilename)); //РѕС‚РєСЂРѕРµРј РїРѕС‚РѕРє Р·Р°РїРёСЃРё
+			for(int i=0;i<elements.length;i++) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ
+				dos.writeInt(elements[i]); //Р·Р°РїРёС€РµРј РІ С„Р°Р№Р» С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚
 			}
-		} catch (IOException e) { //обработка ошибок
-			e.printStackTrace(); //вывод ошибок
+		} catch (IOException e) { //РѕР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
+			e.printStackTrace(); //РІС‹РІРѕРґ РѕС€РёР±РѕРє
 		}
 	}
 	
-	public static void RemakeDirectory(File tempFile) { //процедура пересоздания папки
-		if(!tempFile.exists()) { //если папки не существует
-			tempFile.mkdir(); //создадим папку для блоков
-		} else { //если папка существует
-			String[] files = tempFile.list(); //получим список файлом в папке
-			for(String s:files) { //пройдемся по каждому файлу в папке
-				File currentFile = new File(tempFile.getPath(),s); //создадим временную файловую переменную
-				currentFile.delete(); //удалим текущий файл из папки
+	public static void RemakeDirectory(File tempFile) { //РїСЂРѕС†РµРґСѓСЂР° РїРµСЂРµСЃРѕР·РґР°РЅРёСЏ РїР°РїРєРё
+		if(!tempFile.exists()) { //РµСЃР»Рё РїР°РїРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+			tempFile.mkdir(); //СЃРѕР·РґР°РґРёРј РїР°РїРєСѓ РґР»СЏ Р±Р»РѕРєРѕРІ
+		} else { //РµСЃР»Рё РїР°РїРєР° СЃСѓС‰РµСЃС‚РІСѓРµС‚
+			String[] files = tempFile.list(); //РїРѕР»СѓС‡РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРј РІ РїР°РїРєРµ
+			for(String s:files) { //РїСЂРѕР№РґРµРјСЃСЏ РїРѕ РєР°Р¶РґРѕРјСѓ С„Р°Р№Р»Сѓ РІ РїР°РїРєРµ
+				File currentFile = new File(tempFile.getPath(),s); //СЃРѕР·РґР°РґРёРј РІСЂРµРјРµРЅРЅСѓСЋ С„Р°Р№Р»РѕРІСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ
+				currentFile.delete(); //СѓРґР°Р»РёРј С‚РµРєСѓС‰РёР№ С„Р°Р№Р» РёР· РїР°РїРєРё
 			}
-			tempFile.delete(); //удалим папку
-			if(!tempFile.exists()) { //если папки не существует
-				tempFile.mkdir(); //создадим папку для блоков
+			tempFile.delete(); //СѓРґР°Р»РёРј РїР°РїРєСѓ
+			if(!tempFile.exists()) { //РµСЃР»Рё РїР°РїРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+				tempFile.mkdir(); //СЃРѕР·РґР°РґРёРј РїР°РїРєСѓ РґР»СЏ Р±Р»РѕРєРѕРІ
 			}
 		}
 	}
 	
-	private static void SelectionSort(long[] time) { //процедура сортировки выбором
+	private static void SelectionSort(long[] time) { //РїСЂРѕС†РµРґСѓСЂР° СЃРѕСЂС‚РёСЂРѕРІРєРё РІС‹Р±РѕСЂРѕРј
 		for (int left = 0; left < time.length; left++) {
 			int minInd = left;
 			for (int i = left; i < time.length; i++) {
@@ -118,7 +118,7 @@ public class SortManager {
 		}
 	}
 	
-	private static void BubbleSort(long[] time) { //процедура сортировки пузырьком
+	private static void BubbleSort(long[] time) { //РїСЂРѕС†РµРґСѓСЂР° СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј
 		for (int i=0;i<time.length;i++) {
 			for (int j=0;j<time.length-1;j++) {
 				if (time[j]>time[j+1]) {
@@ -128,7 +128,7 @@ public class SortManager {
 		}
 	}
 	
-	private static void SmartBubbleSort(long[] time) { //процедура умной сортировки пузырьком
+	private static void SmartBubbleSort(long[] time) { //РїСЂРѕС†РµРґСѓСЂР° СѓРјРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј
 		boolean flag=true;
 		while(flag) {
 			flag=false;
@@ -141,7 +141,7 @@ public class SortManager {
 		}
 	}
 	
-	private static void ShakerSort(long[] time) { //процедура шейкер сортировки
+	private static void ShakerSort(long[] time) { //РїСЂРѕС†РµРґСѓСЂР° С€РµР№РєРµСЂ СЃРѕСЂС‚РёСЂРѕРІРєРё
 		boolean swapped=false;
 		do {
 			for(int i=0;i<time.length-2;i++) {
@@ -164,32 +164,32 @@ public class SortManager {
 		while(swapped);
 	}
 	
-	private static void QuickSort(long[] time, int leftBorder, int rightBorder) { //процедура быстрой сортировки
+	private static void QuickSort(long[] time, int leftBorder, int rightBorder) { //РїСЂРѕС†РµРґСѓСЂР° Р±С‹СЃС‚СЂРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
         int leftMarker = leftBorder;
         int rightMarker = rightBorder;
         long pivot = time[(leftMarker + rightMarker) / 2];
         do {
-            // Двигаем левый маркер слева направо пока элемент меньше, чем pivot
+            // Р”РІРёРіР°РµРј Р»РµРІС‹Р№ РјР°СЂРєРµСЂ СЃР»РµРІР° РЅР°РїСЂР°РІРѕ РїРѕРєР° СЌР»РµРјРµРЅС‚ РјРµРЅСЊС€Рµ, С‡РµРј pivot
             while (time[leftMarker] < pivot) {
                 leftMarker++;
             }
-            // Двигаем правый маркер, пока элемент больше, чем pivot
+            // Р”РІРёРіР°РµРј РїСЂР°РІС‹Р№ РјР°СЂРєРµСЂ, РїРѕРєР° СЌР»РµРјРµРЅС‚ Р±РѕР»СЊС€Рµ, С‡РµРј pivot
             while (time[rightMarker] > pivot) {
                 rightMarker--;
             }
-            // Проверим, не нужно обменять местами элементы, на которые указывают маркеры
+            // РџСЂРѕРІРµСЂРёРј, РЅРµ РЅСѓР¶РЅРѕ РѕР±РјРµРЅСЏС‚СЊ РјРµСЃС‚Р°РјРё СЌР»РµРјРµРЅС‚С‹, РЅР° РєРѕС‚РѕСЂС‹Рµ СѓРєР°Р·С‹РІР°СЋС‚ РјР°СЂРєРµСЂС‹
             if (leftMarker <= rightMarker) {
-                // Левый маркер будет меньше правого только если мы должны выполнить swap
+                // Р›РµРІС‹Р№ РјР°СЂРєРµСЂ Р±СѓРґРµС‚ РјРµРЅСЊС€Рµ РїСЂР°РІРѕРіРѕ С‚РѕР»СЊРєРѕ РµСЃР»Рё РјС‹ РґРѕР»Р¶РЅС‹ РІС‹РїРѕР»РЅРёС‚СЊ swap
                 if (leftMarker < rightMarker) {
                 	Swap(time,leftMarker,rightMarker);
                 }
-                // Сдвигаем маркеры, чтобы получить новые границы
+                // РЎРґРІРёРіР°РµРј РјР°СЂРєРµСЂС‹, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РЅРѕРІС‹Рµ РіСЂР°РЅРёС†С‹
                 leftMarker++;
                 rightMarker--;
             }
         } while (leftMarker <= rightMarker);
 
-        // Выполняем рекурсивно для частей
+        // Р’С‹РїРѕР»РЅСЏРµРј СЂРµРєСѓСЂСЃРёРІРЅРѕ РґР»СЏ С‡Р°СЃС‚РµР№
         if (leftMarker < rightBorder) {
             QuickSort(time, leftMarker, rightBorder);
         }
@@ -198,7 +198,7 @@ public class SortManager {
         }
 	}
 	
-	private static void Swap(long[] time, int ind1, int ind2) { //процедура обмена двух элементов массива
+	private static void Swap(long[] time, int ind1, int ind2) { //РїСЂРѕС†РµРґСѓСЂР° РѕР±РјРµРЅР° РґРІСѓС… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
 	    long tmp = time[ind1];
 	    time[ind1] = time[ind2];
 	    time[ind2] = tmp;
